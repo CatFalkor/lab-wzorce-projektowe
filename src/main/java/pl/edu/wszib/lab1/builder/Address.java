@@ -4,29 +4,56 @@ public class Address {
     private final String city;
     private final String street;
     private final String number;
-    private final String code;
+    private final String postalCode;
 
-    private Address(String city, String street, String number, String code) {
+    private Address(final String city,
+                    final String street,
+                    final String number,
+                    final String postalCode) {
         this.city = city;
         this.street = street;
         this.number = number;
-        this.code = code;
+        this.postalCode = postalCode;
     }
 
-    public static final class Builder() {
+    public static Builder builder() {
+        return new Builder();
+    }
+
+    public static final class Builder {
         private String city;
         private String street;
         private String number;
-        private String code;
+        private String postalCode;
 
         public Address build() {
-            return new Address(city, street, number,code);
+            return new Address(
+                    city,
+                    street,
+                    number,
+                    postalCode
+            );
         }
+
+        public Builder city(String city) {
+            this.city = city;
+            return this;
+        }
+
+        public Builder street(String street) {
+            this.street = street;
+            return this;
+        }
+
+        public Builder number(String number) {
+            this.number = number;
+            return this;
+        }
+
+        public Builder postalCode(String postalCode) {
+            this.postalCode = postalCode;
+            return this;
+        }
+
     }
-
-    public static builder() {
-        return new Person.Builder();
-    }
-
-
 }
